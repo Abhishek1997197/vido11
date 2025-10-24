@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vido - Best Videos</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+    a { color: inherit; text-decoration: none; }
+    header { display:flex; align-items:center; justify-content:space-between; padding:16px; border-bottom:1px solid #222; }
+    header h1 { margin:0; font-size:1.8rem; font-weight:700; color:#ff4500; cursor:pointer; }
+    .dropdown button {
+      background:none; border:1px solid #444; color:#fff; padding:6px 12px; border-radius:4px; cursor:pointer;
+    }
+    .dropdown ul {
+      display:none; position:absolute; right:0; top:110%; background:#111; list-style:none; padding:8px; margin:0;
+      border:1px solid #333; border-radius:6px; width:140px; z-index:1000;
+    }
+    .dropdown ul li { margin:0; }
+    .dropdown ul li a { display:block; padding:6px 8px; }
+    .video-wrapper { position:relative; width:100%; padding-bottom:56.25%; overflow:hidden; border-radius:8px; margin:10px 0; }
+    iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
+    .show-more { display:inline-block; padding:10px 18px; border-radius:6px; background:#ff4500; color:#fff; font-weight:600; margin:14px 0; text-align:center; }
+    .more-videos { display:grid; gap:14px; }
+    footer { margin-top:20px; padding-top:12px; border-top:1px solid #222; text-align:center; color:#aaa; }
+  </style>
+</head>
+<body>
+ <!-- HEADER -->
+  <header>
+    <h1 onclick="window.location.href='https://movixo.info'">Vido</h1>
+    <div class="dropdown" style="position:relative;">
+      <button id="dropdownBtn">Categories ▾</button>
+      <ul id="menuList">
+        <li><a href="https://movixo.info">Home</a></li>
+        <li><a href="https://movixo.info">Share</a></li>
+        <li><a href="https://movixo.info">Movies</a></li>
+        <li><a href="https://movixo.info">Webseries</a></li>
+        <li><a href="https://movixo.info">India</a></li>
+        <li><a href="https://movixo.info">Mexican</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <script>
+    const dropdownBtn = document.getElementById('dropdownBtn');
+    const menuList = document.getElementById('menuList');
+
+    dropdownBtn.addEventListener('click', function(e){
+      e.stopPropagation(); // Prevent immediate closing
+      menuList.style.display = (menuList.style.display === 'block') ? 'none' : 'block';
+    });
+
+    // Close dropdown if clicked outside
+    window.addEventListener('click', function(){
+      menuList.style.display = 'none';
+    });
+  </script>
+
+  <!-- POPUNDER AD -->
+  <!-- 🔸 Replace this with your actual Popunder ad script -->
+  <script type="text/javascript" src="//truthfulverb.com/e1/18/e3/e118e3d9ab338d6326c6ab770b6efdde.js"></script>
+
+  <!-- BANNER AD (above main video) -->
+  <!-- 🔸 Replace this with your Banner ad script -->
+  <script type="text/javascript" src="//truthfulverb.com/93/eb/8f/93eb8f04f04abc8cec0d6b140daf62d7.js"></script>
+
+  <!-- MAIN VIDEO -->
+  <div class="video-wrapper">
+    <iframe src="https://www.youtube.com/embed/h57Bbhw_VKo" title="Main Video" allowfullscreen></iframe>
+  </div>
+
+  <!-- NATIVE BANNER AD -->
+  <!-- 🔸 Replace this with your Native Banner ad script -->
+  <script async="async" data-cfasync="false" src="//truthfulverb.com/7a89c6a348a9305a47cc074963b15d02/invoke.js"></script>
+  <div id="container-7a89c6a348a9305a47cc074963b15d02"></div>
+
+  <!-- SHOW MORE BUTTON -->
+  <div style="text-align:center;">
+    <a class="show-more" href="https://movixo.info" target="_blank" rel="noopener noreferrer">Show more</a>
+  </div>
+
+  <!-- SMART LINK / INLINE AD -->
+  <!-- 🔸 Replace this with your Smart Link ad script -->
+  <a href="https://truthfulverb.com/k7x0864m?key=2583aea62dc38d12186dd1240ec454cf" target="_blank" style="color:#ff4500; display:block; text-align:center; margin:10px 0;">Check out our sponsor</a>
+  <!-- OTHER VIDEOS -->
+  <h2 style="padding-left:16px;">More Videos</h2>
+  <div class="more-videos">
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/MQoColHyGzQ?si=RQYh_9nFMTpkunLF" allowfullscreen></iframe>
+    </div>
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/h57Bbhw_VKo" allowfullscreen></iframe>
+    </div>
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/MQoColHyGzQ?si=RQYh_9nFMTpkunLF" allowfullscreen></iframe>
+    </div>
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/h57Bbhw_VKo" allowfullscreen></iframe>
+    </div>
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/MQoColHyGzQ?si=RQYh_9nFMTpkunLF" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- SOCIAL / CUSTOM AD -->
+  <!-- 🔸 Replace this with your Social/Custom ad script -->
+  <script type="text/javascript" src="//truthfulverb.com/99cfc667b03540b41ae9ce40b1858059/invoke.js"></script>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Vido — Best quality videos for you. Enjoy endless entertainment with HD content.</p>
+  </footer>
+
+</body>
+</html>
