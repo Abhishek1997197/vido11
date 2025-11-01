@@ -1,213 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vido - Best Quality Videos</title>
-  <style>
-    body {
-      background: #000;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #111;
-      padding: 10px 16px;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
-    h1 {
-      color: #ff4500;
-      margin: 0;
-      cursor: pointer;
-    }
-    button {
-      background: none;
-      border: 1px solid #444;
-      color: #fff;
-      padding: 6px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    ul {
-      display: none;
-      position: absolute;
-      right: 0;
-      top: 40px;
-      background: #111;
-      list-style: none;
-      padding: 8px;
-      margin: 0;
-      border: 1px solid #333;
-      border-radius: 6px;
-      width: 160px;
-    }
-    ul li a {
-      display: block;
-      padding: 6px 8px;
-      text-decoration: none;
-      color: #fff;
-    }
-    ul li a:hover {
-      background: #222;
-    }
-    section {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 16px;
-    }
-    .video-box {
-      width: 100%;
-      border-radius: 8px;
-      overflow: hidden;
-      margin-bottom: 16px;
-    }
-    video {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-    footer {
-      margin-top: 20px;
-      padding-top: 12px;
-      border-top: 1px solid #222;
-      text-align: center;
-      color: #aaa;
-    }
-    /* Popup Banner */
-    #popupAd {
-      display: flex;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.85);
-      justify-content: center;
-      align-items: center;
-      z-index: 10000;
-    }
-    #popupContent {
-      background: #111;
-      border-radius: 10px;
-      padding: 25px;
-      position: relative;
-      text-align: center;
-      box-shadow: 0 0 15px rgba(255,69,0,0.4);
-    }
-    #popupClose {
-      position: absolute;
-      top: 8px;
-      right: 10px;
-      color: #fff;
-      cursor: pointer;
-      font-size: 22px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vido</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #000;
+    color: #fff;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #111;
+    padding: 15px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #f8b400;
+  }
+
+  .categories {
+    position: relative;
+  }
+
+  .cat-btn {
+    background: #f8b400;
+    color: #000;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .cat-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: #222;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .cat-menu a {
+    display: block;
+    padding: 10px 15px;
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid #333;
+  }
+
+  .cat-menu a:hover {
+    background: #333;
+  }
+
+  .categories:hover .cat-menu {
+    display: block;
+  }
+
+  .main-video {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+
+  iframe {
+    width: 90%;
+    height: 400px;
+    border-radius: 12px;
+    border: none;
+  }
+
+  .see-more {
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .see-more button {
+    background: #f8b400;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 10px 20px;
+  }
+
+  .video-item {
+    position: relative;
+    cursor: pointer;
+  }
+
+  .video-item img {
+    width: 100%;
+    border-radius: 10px;
+    transition: 0.3s;
+  }
+
+  .video-item img:hover {
+    transform: scale(1.03);
+  }
+
+  .video-item .play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.6);
+    border-radius: 50%;
+    padding: 15px;
+  }
+
+  .video-item .play-btn::before {
+    content: "▶";
+    font-size: 24px;
+    color: #f8b400;
+  }
+
+  footer {
+    text-align: center;
+    background: #111;
+    padding: 20px;
+    margin-top: 20px;
+  }
+
+  footer a {
+    color: #f8b400;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+
+  @media (max-width: 600px) {
+    iframe { height: 250px; }
+  }
+</style>
 </head>
 <body>
-  <!-- SOCIAL BAR -->
-  <script type='text/javascript' src='//truthfulverb.com/98/e9/23/98e9235c19d9be105ff8837b48718bf7.js'></script>
 
-  <!-- POPUNDER -->
-  <script type='text/javascript' src='//truthfulverb.com/6a/80/fb/6a80fbcf2679679addbe83985512b96b.js'></script>
-
-  <!-- HEADER -->
-  <header>
-    <h1 onclick="window.location.href='/'">Vido</h1>
-    <div style="position:relative;">
-      <button onclick="toggleMenu()">Categories ▾</button>
-      <ul id="menuList">
-        <li><a href="/">Home</a></li>
-        <li><a href="https://youtu.be/EWiuaoyHGHU?si=Yi87SZy3MPI5BVKb" target="_blank">Movies</a></li>
-        <li><a href="https://youtu.be/EWiuaoyHGHU?si=Yi87SZy3MPI5BVKb" target="_blank">Web Series</a></li>
-        <li><a href="https://youtu.be/EWiuaoyHGHU?si=Yi87SZy3MPI5BVKb" target="_blank">India</a></li>
-        <li><a href="https://youtu.be/EWiuaoyHGHU?si=Yi87SZy3MPI5BVKb" target="_blank">Mexican</a></li>
-        <li><a href="#" onclick="navigator.clipboard.writeText(window.location.href);return false;">Share</a></li>
-      </ul>
-    </div>
-  </header>
-
-  <section>
-
-  <!-- MAIN VIDEO -->
-    <div class="video-box">
-      <video controls poster="https://img.youtube.com/vi/EWiuaoyHGHU/maxresdefault.jpg">
-        <source src="your-main-video.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
-
-    <!-- NATIVE BANNER -->
-    <script async="async" data-cfasync="false" src="//truthfulverb.com/72f48ce8cc908326f6190c1b89f30dd4/invoke.js"></script>
-    <div id="container-72f48ce8cc908326f6190c1b89f30dd4"></div>
-
-    <!-- OTHER VIDEOS -->
-    <h2 style="margin:20px 0 10px;">More Videos</h2>
-    <div class="video-box">
-      <video controls poster="https://img.youtube.com/vi/EWiuaoyHGHU/maxresdefault.jpg"><source src="https://youtu.be/EWiuaoyHGHU?si=Yi87SZy3MPI5BVKb" type="video/mp4" /></video>
-    </div>
-    <div class="video-box">
-      <video controls poster="https://img.youtube.com/vi/EWiuaoyHGHU/maxresdefault.jpg"><source src="https://youtu.be/EWiuaoyHGHU?si=Yi87SZy3MPI5BVKb" type="video/mp4" /></video>
-    </div>
-    <div class="video-box">
-      <video controls poster="https://img.youtube.com/vi/EWiuaoyHGHU/maxresdefault.jpg"><source src="https://youtu.be/EWiuaoyHGHU?si=Yi87SZy3MPI5BVKb" type="video/mp4" /></video>
-    </div>
-    <div class="video-box">
-      <video controls poster="https://img.youtube.com/vi/EWiuaoyHGHU/maxresdefault.jpg"><source src="https://youtu.be/EWiuaoyHGHU?si=Yi87SZy3MPI5BVKb" type="video/mp4" /></video>
-    </div>
-    <div class="video-box">
-      <video controls poster="https://img.youtube.com/vi/EWiuaoyHGHU/maxresdefault.jpg"><source src="https://youtu.be/EWiuaoyHGHU?si=Yi87SZy3MPI5BVKb" type="video/mp4" /></video>
-    </div>
-    <div class="video-box">
-      <video controls poster="https://img.youtube.com/vi/EWiuaoyHGHU/maxresdefault.jpg"><source src="https://youtu.be/EWiuaoyHGHU?si=Yi87SZy3MPI5BVKb" type="video/mp4" /></video>
-    </div>
-
-  </section>
-<!-- FOOTER -->
-  <footer>
-    © 2025 Vido — Best quality videos for you. Enjoy endless entertainment with HD content.
-  </footer>
-
-  <!-- POPUP BANNER -->
-  <div id="popupAd">
-    <div id="popupContent">
-      <span id="popupClose">&times;</span>
-      <div id="bannerAd"></div>
-      <script type="text/javascript">
-        atOptions = {
-          'key' : 'd1e309b845a208ad4dcc18cb49968ada',
-          'format' : 'iframe',
-          'height' : 50,
-          'width' : 320,
-          'params' : {}
-        };
-      </script>
-      <script type="text/javascript" src="//truthfulverb.com/d1e309b845a208ad4dcc18cb49968ada/invoke.js"></script>
+<!-- Header -->
+<header>
+  <h1>Vido</h1>
+  <div class="categories">
+    <button class="cat-btn">☰ Categories</button>
+    <div class="cat-menu">
+      <a href="#">Movies</a>
+      <a href="#">Videos</a>
+      <a href="#">Clips</a>
+      <a href="#">Rate</a>
+      <a href="#">Temper</a>
     </div>
   </div>
+</header>
 
-  <!-- SMARTLINK -->
-  <script>
+<!-- Popunder Ad -->
+<script type='text/javascript' src='//truthfulverb.com/6a/80/fb/6a80fbcf2679679addbe83985512b96b.js'></script>
+
+<!-- Main Video -->
+<div class="main-video">
+  <iframe id="mainPlayer" src="https://www.youtube.com/embed/O3w-X4-hjWM?autoplay=0" allowfullscreen></iframe>
+</div>
+
+<!-- Native Banner -->
+<script async="async" data-cfasync="false" src="//truthfulverb.com/72f48ce8cc908326f6190c1b89f30dd4/invoke.js"></script>
+<div id="container-72f48ce8cc908326f6190c1b89f30dd4" style="text-align:center;margin-bottom:20px;"></div>
+
+<!-- See More Button -->
+<div class="see-more">
+  <button onclick="document.getElementById('more-videos').style.display='grid'">See More</button>
+</div>
+
+
+<!-- Video Thumbnails -->
+<div id="more-videos" class="video-grid" style="display:none;">
+  <div class="video-item" onclick="playVideo('ji1bb_-tJ8g')">
+    <img src="https://img.youtube.com/vi/ji1bb_-tJ8g/hqdefault.jpg" alt="Video 1">
+    <div class="play-btn"></div>
+  </div>
+  <div class="video-item" onclick="playVideo('Y3dug9DfkIA')">
+    <img src="https://img.youtube.com/vi/Y3dug9DfkIA/hqdefault.jpg" alt="Video 2">
+    <div class="play-btn"></div>
+  </div>
+  <div class="video-item" onclick="playVideo('ji1bb_-tJ8g')">
+    <img src="https://img.youtube.com/vi/ji1bb_-tJ8g/hqdefault.jpg" alt="Video 3">
+    <div class="play-btn"></div>
+  </div>
+  <div class="video-item" onclick="playVideo('Y3dug9DfkIA')">
+    <img src="https://img.youtube.com/vi/Y3dug9DfkIA/hqdefault.jpg" alt="Video 4">
+    <div class="play-btn"></div>
+  </div>
+  <div class="video-item" onclick="playVideo('ji1bb_-tJ8g')">
+    <img src="https://img.youtube.com/vi/ji1bb_-tJ8g/hqdefault.jpg" alt="Video 5">
+    <div class="play-btn"></div>
+  </div>
+</div>
+
+<!-- Banner Ad -->
+<div style="text-align:center;margin:20px 0;">
+<script type="text/javascript">
+	atOptions = {
+		'key' : 'd1e309b845a208ad4dcc18cb49968ada',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//truthfulverb.com/d1e309b845a208ad4dcc18cb49968ada/invoke.js"></script>
+</div>
+
+<!-- Social Bar -->
+<script type='text/javascript' src='//truthfulverb.com/98/e9/23/98e9235c19d9be105ff8837b48718bf7.js'></script>
+
+<!-- Footer -->
+<footer>
+  <p><a href="#">About</a> | <a href="#">Contact</a></p>
+  <p>© 2025 Vido. All rights reserved.</p>
+</footer>
+
+<!-- Smart Link -->
+<script>
+  function playVideo(videoId) {
+    const mainPlayer = document.getElementById('mainPlayer');
+    mainPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Optional: Smart Link popup after 10s
+  setTimeout(() => {
     window.open("https://truthfulverb.com/tivcvpsy?key=8da1446fac8d8be348c99bfdcffb272e", "_blank");
-  </script>
-
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('menuList');
-      menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
-    }
-
-    document.getElementById('popupClose').addEventListener('click', function() {
-      document.getElementById('popupAd').style.display = 'none';
-    });
-  </script>
+  }, 10000);
+</script>
 
 </body>
 </html>
