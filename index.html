@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,6 +63,15 @@
       margin: 20px auto;
       width: 90%;
       max-width: 800px;
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    .main-video iframe {
+      width: 100%;
+      height: 450px;
+      border: none;
+      border-radius: 15px;
     }
 
     /* Native banner ad */
@@ -69,24 +79,65 @@
       margin: 20px auto;
       width: 90%;
       max-width: 800px;
-      background: #111;
+      background: rgba(255, 255, 0, 0.1);
       border-radius: 10px;
       padding: 10px;
     }
 
-    /* Other videos */
+    /* Video grid */
     .video-thumbnails {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 15px;
-      margin: 20px 0;
+      gap: 20px;
+      margin: 30px 0;
     }
-    .video-thumbnails iframe {
+    .video-box {
+      position: relative;
       width: 300px;
       height: 170px;
-      border-radius: 10px;
+      border-radius: 15px;
+      overflow: hidden;
+      background-color: #111;
+    }
+    .video-box iframe {
+      width: 100%;
+      height: 100%;
       border: none;
+      border-radius: 15px;
+    }
+
+    /* Play button overlay */
+    .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255, 255, 0, 0.7);
+      color: black;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      line-height: 50px;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .video-box:hover .play-btn {
+      opacity: 1;
+    }
+
+    /* Transparent description box */
+    .desc-box {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: yellow;
+      padding: 5px 0;
+      font-size: 0.9em;
     }
 
     /* Banner ad */
@@ -106,7 +157,7 @@
   </style>
 </head>
 <body>
-<!-- Header -->
+  <!-- Header -->
   <header>
     <div class="title">Vido</div>
     <div class="categories" onclick="toggleDropdown()">☰ Categories
@@ -122,7 +173,7 @@
 
   <!-- Main Video -->
   <div class="main-video">
-    <iframe width="100%" height="450" src="https://www.youtube.com/embed/O3w-X4-hjWM?si=sd0Oipa6ryoMd0xI" frameborder="0" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/O3w-X4-hjWM?si=sd0Oipa6ryoMd0xI" allowfullscreen></iframe>
   </div>
 
   <!-- Native Banner Ad -->
@@ -131,13 +182,32 @@
 
   <!-- 5 Video Thumbnails -->
   <div class="video-thumbnails">
-    <iframe src="https://www.youtube.com/embed/ji1bb_-tJ8g?si=TmTWEYhkBbAeq4YZ" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/Y3dug9DfkIA?si=pMAGl5grQIJDNgDo" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/O3w-X4-hjWM?si=sd0Oipa6ryoMd0xI" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/ji1bb_-tJ8g?si=TmTWEYhkBbAeq4YZ" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/Y3dug9DfkIA?si=pMAGl5grQIJDNgDo" allowfullscreen></iframe>
+    <div class="video-box">
+      <iframe src="https://www.youtube.com/embed/ji1bb_-tJ8g?si=TmTWEYhkBbAeq4YZ" allowfullscreen></iframe>
+      <div class="play-btn">▶</div>
+      <div class="desc-box">Tiger in the Jungle</div>
+    </div>
+    <div class="video-box">
+      <iframe src="https://www.youtube.com/embed/Y3dug9DfkIA?si=pMAGl5grQIJDNgDo" allowfullscreen></iframe>
+      <div class="play-btn">▶</div>
+      <div class="desc-box">Nature in Motion</div>
+    </div>
+    <div class="video-box">
+      <iframe src="https://www.youtube.com/embed/O3w-X4-hjWM?si=sd0Oipa6ryoMd0xI" allowfullscreen></iframe>
+      <div class="play-btn">▶</div>
+      <div class="desc-box">Wilderness Walk</div>
+    </div>
+    <div class="video-box">
+      <iframe src="https://www.youtube.com/embed/ji1bb_-tJ8g?si=TmTWEYhkBbAeq4YZ" allowfullscreen></iframe>
+      <div class="play-btn">▶</div>
+      <div class="desc-box">The Hidden Path</div>
+    </div>
+    <div class="video-box">
+      <iframe src="https://www.youtube.com/embed/Y3dug9DfkIA?si=pMAGl5grQIJDNgDo" allowfullscreen></iframe>
+      <div class="play-btn">▶</div>
+      <div class="desc-box">Forest Secrets</div>
+    </div>
   </div>
-
   <!-- Banner Ad -->
   <div class="banner-ad" id="banner-container"></div>
   <script type="text/javascript">
@@ -156,18 +226,14 @@
     <div>About | © All Rights Reserved</div>
   </footer>
 
-  <!-- Adsterra other codes -->
-  <!-- Popunder -->
+  <!-- Adsterra Popunder -->
   <script type='text/javascript' src='//truthfulverb.com/6a/80/fb/6a80fbcf2679679addbe83985512b96b.js'></script>
 
   <!-- Social Bar -->
   <script type='text/javascript' src='//truthfulverb.com/98/e9/23/98e9235c19d9be105ff8837b48718bf7.js'></script>
 
-  <!-- Smart Link (works silently in background) -->
-  <script>
-    // Uncomment if you want smart link redirect
-    // window.location.href = "https://truthfulverb.com/tivcvpsy?key=8da1446fac8d8be348c99bfdcffb272e";
-  </script>
+  <!-- Smart Link (optional redirect, disabled by default) -->
+  <!-- <script>window.location.href="https://truthfulverb.com/tivcvpsy?key=8da1446fac8d8be348c99bfdcffb272e";</script> -->
 
   <script>
     function toggleDropdown() {
