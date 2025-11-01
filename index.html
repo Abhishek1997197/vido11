@@ -77,6 +77,21 @@
     border: none;
   }
 
+  .see-more {
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .see-more button {
+    background: #f8b400;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
   .video-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -128,44 +143,12 @@
     margin: 0 10px;
   }
 
-  /* Popup ad style */
-  .ad-popup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(20, 20, 20, 0.95);
-    border: 2px solid #f8b400;
-    border-radius: 20px;
-    padding: 20px;
-    text-align: center;
-    z-index: 9999;
-    width: 350px;
-    max-width: 90%;
-    box-shadow: 0 0 20px rgba(248,180,0,0.5);
-  }
-
-  .ad-popup button.close-ad {
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    background: #f8b400;
-    border: none;
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-
   @media (max-width: 600px) {
     iframe { height: 250px; }
   }
 </style>
 </head>
-<body>
-
+<body
 <!-- Header -->
 <header>
   <h1>Vido</h1>
@@ -193,7 +176,12 @@
 <script async="async" data-cfasync="false" src="//truthfulverb.com/72f48ce8cc908326f6190c1b89f30dd4/invoke.js"></script>
 <div id="container-72f48ce8cc908326f6190c1b89f30dd4" style="text-align:center;margin-bottom:20px;"></div>
 
-<!-- Other Videos (visible by default) -->
+<!-- See More Button -->
+<div class="see-more">
+  <button>See More</button>
+</div>
+
+<!-- Video Thumbnails (visible by default) -->
 <div id="more-videos" class="video-grid">
   <div class="video-item" onclick="playVideo('ji1bb_-tJ8g')">
     <img src="https://img.youtube.com/vi/ji1bb_-tJ8g/hqdefault.jpg" alt="Video 1">
@@ -217,22 +205,18 @@
   </div>
 </div>
 
-
-<!-- Banner Ad (popup style) -->
-<div class="ad-popup" id="adPopup">
-  <button class="close-ad" onclick="document.getElementById('adPopup').style.display='none'">✖</button>
-  <div id="bannerAdContainer">
-    <script type="text/javascript">
-      atOptions = {
-        'key' : 'd1e309b845a208ad4dcc18cb49968ada',
-        'format' : 'iframe',
-        'height' : 50,
-        'width' : 320,
-        'params' : {}
-      };
-    </script>
-    <script type="text/javascript" src="//truthfulverb.com/d1e309b845a208ad4dcc18cb49968ada/invoke.js"></script>
-  </div>
+<!-- Banner Ad -->
+<div style="text-align:center;margin:20px 0;">
+<script type="text/javascript">
+	atOptions = {
+		'key' : 'd1e309b845a208ad4dcc18cb49968ada',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//truthfulverb.com/d1e309b845a208ad4dcc18cb49968ada/invoke.js"></script>
 </div>
 
 <!-- Social Bar -->
@@ -246,29 +230,23 @@
 
 <!-- Smart Link -->
 <script>
-  // Play video dynamically
   function playVideo(videoId) {
     const mainPlayer = document.getElementById('mainPlayer');
     mainPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // Smart link open after 10 sec
-  setTimeout(() => {
-    window.open("https://truthfulverb.com/tivcvpsy?key=8da1446fac8d8be348c99bfdcffb272e", "_blank");
-  }, 10000);
-
-  // Show popup ad after 3 sec
-  setTimeout(() => {
-    document.getElementById('adPopup').style.display = 'block';
-  }, 3000);
-
-  // Toggle categories menu open/close
+  // Category dropdown toggle
   const catToggle = document.getElementById('catToggle');
   const catMenu = document.getElementById('catMenu');
   catToggle.addEventListener('click', () => {
     catMenu.style.display = catMenu.style.display === 'block' ? 'none' : 'block';
   });
+
+  // Optional: Smart Link popup after 10s
+  setTimeout(() => {
+    window.open("https://truthfulverb.com/tivcvpsy?key=8da1446fac8d8be348c99bfdcffb272e", "_blank");
+  }, 10000);
 </script>
 
 </body>
