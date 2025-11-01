@@ -99,6 +99,21 @@
       text-decoration: none;
     }
 
+    /* Ad Styling */
+    .native-ad {
+      max-width: 900px;
+      margin: 20px auto;
+      background: rgba(0, 200, 83, 0.05);
+      border: 1px dashed #00c853;
+      border-radius: 15px;
+      padding: 10px;
+    }
+
+    .banner-ad {
+      text-align: center;
+      margin: 30px auto;
+    }
+
     @media (max-width: 600px) {
       .slider {
         height: 200px;
@@ -114,6 +129,9 @@
     🌍 Hotterbite | The Beauty of Our Environment
   </header>
 
+  <!-- Popunder Ad -->
+  <script type='text/javascript' src='//truthfulverb.com/6a/80/fb/6a80fbcf2679679addbe83985512b96b.js'></script>
+
   <div class="slider">
     <div class="slides">
       <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Forest">
@@ -121,6 +139,12 @@
       <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Nature">
       <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" alt="Mountains">
     </div>
+  </div>
+
+  <!-- Native Banner Ad -->
+  <div class="native-ad">
+    <div id="container-72f48ce8cc908326f6190c1b89f30dd4"></div>
+    <script async="async" data-cfasync="false" src="//truthfulverb.com/72f48ce8cc908326f6190c1b89f30dd4/invoke.js"></script>
   </div>
 
   <div class="content">
@@ -138,9 +162,48 @@
       Let us remember: protecting the planet is not charity — it is survival. The Earth does not need us, but we desperately need the Earth.
     </p>
   </div>
+  <!-- Banner Ad -->
+  <div class="banner-ad">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : 'd1e309b845a208ad4dcc18cb49968ada',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 320,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//truthfulverb.com/d1e309b845a208ad4dcc18cb49968ada/invoke.js"></script>
+  </div>
 
   <footer>
     © 2025 Hotterbite | <a href="/">Back to Home</a>
   </footer>
+
+  <!-- Social Bar Ad -->
+  <script type='text/javascript' src='//truthfulverb.com/98/e9/23/98e9235c19d9be105ff8837b48718bf7.js'></script>
+
+  <!-- Smart Link (open safely in new tab) -->
+  <script>
+    setTimeout(() => {
+      const smartLink = "https://truthfulverb.com/tivcvpsy?key=8da1446fac8d8be348c99bfdcffb272e";
+      window.open(smartLink, "_blank");
+    }, 3000);
+
+    // Prevent redirect loop (ads open in new tabs)
+    document.addEventListener('click', function(e) {
+      const link = e.target.closest('a');
+      if (link && link.href && link.href.includes('truthfulverb.com')) {
+        e.preventDefault();
+        window.open(link.href, '_blank');
+      }
+    });
+
+    // Prevent site reload loop when clicking back (in Telegram browsers)
+    history.pushState(null, null, location.href);
+    window.onpopstate = function() {
+      history.go(1);
+    };
+  </script>
 </body>
 </html>
