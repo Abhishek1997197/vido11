@@ -1,188 +1,179 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vido</title>
   <style>
-    body { font-family: Arial, sans-serif; background:#000; color:#fff; margin:0; padding:0; text-align:center; }
-    header { display:flex; justify-content:space-between; align-items:center; background:#111; padding:15px 20px; position:sticky; top:0; z-index:1000; }
-    header h1 { margin:0; font-size:24px; color:#f4f4f4; }
-    .categories-btn { background:#222; border:none; color:#fff; padding:10px 15px; cursor:pointer; border-radius:6px; }
-    .categories-menu { display:none; position:absolute; right:20px; top:60px; background:#222; border-radius:8px; overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,.4); }
-    .categories-menu a { display:block; color:#fff; text-decoration:none; padding:10px 15px; border-bottom:1px solid #333; }
-    .categories-menu a:hover { background:#333; }
-    main { padding:20px; }
-    iframe { border-radius:12px; border:none; }
-    .main-video iframe { width:90%; height:400px; max-width:900px; }
-    .see-more { display:inline-block; background:#444; color:white; padding:10px 20px; border-radius:8px; text-decoration:none; margin:20px 0; transition:background .3s; }
-    .see-more:hover { background:#666; }
-    .video-gallery { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
-    .video-gallery iframe { width:300px; height:170px; border-radius:8px; }
-    footer { margin-top:30px; padding:20px; background:#111; font-size:14px; }
-    .ad-container { margin:20px auto; text-align:center; }
-    @media (max-width:600px) { .video-gallery iframe { width:90%; height:200px; } }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: white;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    /* Header */
+    header {
+      background-color: #111;
+      color: yellow;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .title {
+      font-size: 1.8em;
+      font-weight: bold;
+    }
+    .categories {
+      font-size: 1.1em;
+      color: yellow;
+      cursor: pointer;
+      position: relative;
+    }
+    .dropdown {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: #222;
+      border: 1px solid yellow;
+      border-radius: 6px;
+      margin-top: 10px;
+      text-align: left;
+      padding: 10px;
+    }
+    .dropdown a {
+      display: block;
+      color: yellow;
+      padding: 6px;
+      text-decoration: none;
+    }
+    .dropdown a:hover {
+      background-color: #333;
+    }
+
+    /* Main video */
+    .main-video {
+      margin: 20px auto;
+      width: 90%;
+      max-width: 800px;
+    }
+
+    /* Native banner ad */
+    #container-72f48ce8cc908326f6190c1b89f30dd4 {
+      margin: 20px auto;
+      width: 90%;
+      max-width: 800px;
+      background: #111;
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    /* Other videos */
+    .video-thumbnails {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+    .video-thumbnails iframe {
+      width: 300px;
+      height: 170px;
+      border-radius: 10px;
+      border: none;
+    }
+
+    /* Banner ad */
+    .banner-ad {
+      margin: 30px auto;
+      width: 320px;
+      height: 50px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #111;
+      color: yellow;
+      padding: 15px;
+      font-size: 0.9em;
+    }
   </style>
 </head>
 <body>
-
+<!-- Header -->
   <header>
-    <h1>Vido</h1>
-    <button class="categories-btn" id="catBtn">Categories ▾</button>
-    <div class="categories-menu" id="menu">
-      <a href="https://en.wikipedia.org/wiki/Film" target="_blank" rel="noopener">Movies</a>
-      <a href="https://en.wikipedia.org/wiki/Video" target="_blank" rel="noopener">Videos</a>
-      <a href="https://en.wikipedia.org/wiki/Clip_(media)" target="_blank" rel="noopener">Clips</a>
-      <a href="https://en.wikipedia.org/wiki/Rating" target="_blank" rel="noopener">Rate</a>
-      <a href="https://en.wikipedia.org/wiki/Temperature" target="_blank" rel="noopener">Tempera</a>
+    <div class="title">Vido</div>
+    <div class="categories" onclick="toggleDropdown()">☰ Categories
+      <div class="dropdown" id="dropdownMenu">
+        <a href="https://en.wikipedia.org/wiki/Film" target="_blank">Movies</a>
+        <a href="https://en.wikipedia.org/wiki/Video" target="_blank">Videos</a>
+        <a href="https://en.wikipedia.org/wiki/Clip_(film)" target="_blank">Clips</a>
+        <a href="https://en.wikipedia.org/wiki/Rating_system" target="_blank">Rate</a>
+        <a href="https://en.wikipedia.org/wiki/Temperature" target="_blank">Tempera</a>
+      </div>
     </div>
   </header>
 
-  <main>
-    <!-- Main Video -->
-    <div class="main-video">
-      <iframe src="https://www.youtube.com/embed/O3w-X4-hjWM" allowfullscreen title="main-video"></iframe>
-    </div>
+  <!-- Main Video -->
+  <div class="main-video">
+    <iframe width="100%" height="450" src="https://www.youtube.com/embed/O3w-X4-hjWM?si=sd0Oipa6ryoMd0xI" frameborder="0" allowfullscreen></iframe>
+  </div>
 
-    <!-- See More -->
-    <a class="see-more" href="https://en.wikipedia.org/wiki/YouTube" target="_blank" rel="noopener">See more</a>
+  <!-- Native Banner Ad -->
+  <div id="container-72f48ce8cc908326f6190c1b89f30dd4"></div>
+  <script async="async" data-cfasync="false" src="//truthfulverb.com/72f48ce8cc908326f6190c1b89f30dd4/invoke.js"></script>
 
-    <!-- Other Videos -->
-    <div class="video-gallery" role="region" aria-label="other videos">
-      <iframe src="https://www.youtube.com/embed/ji1bb_-tJ8g" allowfullscreen title="v1"></iframe>
-      <iframe src="https://www.youtube.com/embed/Y3dug9DfkIA" allowfullscreen title="v2"></iframe>
-      <iframe src="https://www.youtube.com/embed/O3w-X4-hjWM" allowfullscreen title="v3"></iframe>
-      <iframe src="https://www.youtube.com/embed/Y3dug9DfkIA" allowfullscreen title="v4"></iframe>
-      <iframe src="https://www.youtube.com/embed/ji1bb_-tJ8g" allowfullscreen title="v5"></iframe>
-    </div>
- <!-- Ads Section (placeholder containers) -->
-    <div class="ad-container" id="ad-area">
-      <!-- Native/banner/social code will be dynamically inserted after first user click -->
-    </div>
-  </main>
+  <!-- 5 Video Thumbnails -->
+  <div class="video-thumbnails">
+    <iframe src="https://www.youtube.com/embed/ji1bb_-tJ8g?si=TmTWEYhkBbAeq4YZ" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/Y3dug9DfkIA?si=pMAGl5grQIJDNgDo" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/O3w-X4-hjWM?si=sd0Oipa6ryoMd0xI" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/ji1bb_-tJ8g?si=TmTWEYhkBbAeq4YZ" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/Y3dug9DfkIA?si=pMAGl5grQIJDNgDo" allowfullscreen></iframe>
+  </div>
+
+  <!-- Banner Ad -->
+  <div class="banner-ad" id="banner-container"></div>
+  <script type="text/javascript">
+    atOptions = {
+      'key': 'd1e309b845a208ad4dcc18cb49968ada',
+      'format': 'iframe',
+      'height': 50,
+      'width': 320,
+      'params': {}
+    };
+  </script>
+  <script type="text/javascript" src="//truthfulverb.com/d1e309b845a208ad4dcc18cb49968ada/invoke.js"></script>
 
   <!-- Footer -->
   <footer>
-    <p>About | © 2025 Vido. All Rights Reserved.</p>
+    <div>About | © All Rights Reserved</div>
   </footer>
 
+  <!-- Adsterra other codes -->
+  <!-- Popunder -->
+  <script type='text/javascript' src='//truthfulverb.com/6a/80/fb/6a80fbcf2679679addbe83985512b96b.js'></script>
+
+  <!-- Social Bar -->
+  <script type='text/javascript' src='//truthfulverb.com/98/e9/23/98e9235c19d9be105ff8837b48718bf7.js'></script>
+
+  <!-- Smart Link (works silently in background) -->
   <script>
-    // Toggle categories menu
-    const catBtn = document.getElementById('catBtn');
-    const menu = document.getElementById('menu');
-    catBtn.addEventListener('click', (e) => {
-      // stopPropagation so our global click handler for "first user gesture" still works,
-      // but we want to toggle the menu on each click.
-      e.stopPropagation();
+    // Uncomment if you want smart link redirect
+    // window.location.href = "https://truthfulverb.com/tivcvpsy?key=8da1446fac8d8be348c99bfdcffb272e";
+  </script>
+
+  <script>
+    function toggleDropdown() {
+      const menu = document.getElementById('dropdownMenu');
       menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (menu.style.display === 'block' && !menu.contains(e.target) && e.target !== catBtn) {
-        menu.style.display = 'none';
-      }
-    });
-
-    /* ===========================
-       Ad and Popunder handling
-       ===========================
-       Explanation:
-       - Modern browsers block popups/popunders opened automatically on page load.
-       - To improve reliability we wait for a genuine user gesture (first click anywhere)
-         and then dynamically insert the ad scripts and open smartlink/popunder windows.
-       - This approach does NOT guarantee the ad will appear (ad network rules, domain registration,
-         HTTPS, or adblockers can still block them). See debug notes below.
-    */
-
-    let adsTriggered = false;
-    function triggerAdsOnFirstClick(e) {
-      if (adsTriggered) return;
-      adsTriggered = true;
-
-      // Example: dynamically insert the popunder script (as provided)
-      try {
-        // 1) Insert Popunder script
-        const popScript = document.createElement('script');
-        popScript.type = 'text/javascript';
-        popScript.src = '//truthfulverb.com/6a/80/fb/6a80fbcf2679679addbe83985512b96b.js';
-        document.body.appendChild(popScript);
-
-        // 2) Insert Native banner script and container
-        const nativeScript = document.createElement('script');
-        nativeScript.async = true;
-        nativeScript.dataset.cfasync = 'false';
-        nativeScript.src = '//truthfulverb.com/72f48ce8cc908326f6190c1b89f30dd4/invoke.js';
-        document.getElementById('ad-area').appendChild(nativeScript);
-        const nativeDiv = document.createElement('div');
-        nativeDiv.id = 'container-72f48ce8cc908326f6190c1b89f30dd4';
-        document.getElementById('ad-area').appendChild(nativeDiv);
-// 3) Insert Banner (invoke.js style) as provided
-        const atOptionsScript = document.createElement('script');
-        atOptionsScript.type = 'text/javascript';
-        atOptionsScript.text = `
-          atOptions = {
-            'key' : 'd1e309b845a208ad4dcc18cb49968ada',
-            'format' : 'iframe',
-            'height' : 50,
-            'width' : 320,
-            'params' : {}
-          };
-        `;
-        document.getElementById('ad-area').appendChild(atOptionsScript);
-
-        const bannerScript = document.createElement('script');
-        bannerScript.type = 'text/javascript';
-        bannerScript.src = '//truthfulverb.com/d1e309b845a208ad4dcc18cb49968ada/invoke.js';
-        document.getElementById('ad-area').appendChild(bannerScript);
-
-        // 4) Insert Social bar script
-        const socialScript = document.createElement('script');
-        socialScript.type = 'text/javascript';
-        socialScript.src = '//truthfulverb.com/98/e9/23/98e9235c19d9be105ff8837b48718bf7.js';
-        document.getElementById('ad-area').appendChild(socialScript);
-
-      } catch (err) {
-        console.warn('Error inserting ad scripts:', err);
-      }
-
-      // 5) Open Smart Link/popunder in a user-initiated window/tab
-      // Using window.open on the user's click event is far more likely to succeed.
-      // Smart link URL (as provided)
-      const smartLink = 'https://truthfulverb.com/tivcvpsy?key=8da1446fac8d8be348c99bfdcffb272e';
-
-      // Try to open as a new window/tab. Browsers that allow popunder behavior will keep it as
-      // popunder; otherwise it will open as a normal new tab. This call is user-initiated (from click).
-      try {
-        window.open(smartLink, '_blank', 'noopener,noreferrer');
-      } catch (err) {
-        console.warn('Smartlink open blocked:', err);
-      }
-// remove the listener (we used {once:true} below too, but keep safe)
-      document.removeEventListener('click', triggerAdsOnFirstClick);
     }
-
-    // Attach listener that will run only once on the first user click anywhere
-    document.addEventListener('click', triggerAdsOnFirstClick, { once: true, capture: true });
-
-    // Accessibility: if user navigates via keyboard and uses Enter/Space, also handle it
-    document.addEventListener('keydown', function handlerKey(e) {
-      if (!adsTriggered && (e.key === 'Enter' || e.key === ' ')) {
-        triggerAdsOnFirstClick(e);
-      }
-    });
-
-    /* ===========================
-       Debugging checklist (if ads still don't show)
-       ===========================
-       1) Serve over HTTPS (many ad networks require a secure origin). GitHub Pages serves over HTTPS by default.
-       2) Make sure your Adsterra account has the site/domain approved (some networks block unknown domains).
-       3) Disable browser adblockers / privacy extensions when testing.
-       4) Open Developer Tools -> Console/Network to see script/network errors for the truthfulverb domain.
-       5) Some browsers still block 'popunder' behavior even after user gesture; test in multiple browsers.
-       6) If the ad network requires tags in <head> specifically, follow their integration docs — some providers insist on placement in head.
-    */
   </script>
 </body>
 </html>
