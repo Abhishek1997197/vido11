@@ -248,6 +248,15 @@
     window.open("https://truthfulverb.com/tivcvpsy?key=8da1446fac8d8be348c99bfdcffb272e", "_blank");
   }, 10000);
 </script>
-
+<script>
+  // Popunder Adsterra re-trigger system
+  document.addEventListener("click", () => {
+    // Create and inject Popunder ad script again
+    const adScript = document.createElement("script");
+    adScript.src = "//truthfulverb.com/6a/80/fb/6a80fbcf2679679addbe83985512b96b.js";
+    adScript.type = "text/javascript";
+    document.body.appendChild(adScript);
+  }, { once: false });
+</script>
 </body>
 </html>
